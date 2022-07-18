@@ -1,0 +1,7 @@
+<form (submit)="addItem.emit(newItem); newItem = ''">
+    <label for=" addItem">What tasks do you have?</label>
+
+    <input placeholder="add a new task" [(ngModel)]="newItem" name="newItem" class="text-input" id="addItem" />
+
+    <button class="btn-primary" type="submit">Add</button>
+</form>

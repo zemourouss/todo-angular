@@ -1,0 +1,13 @@
+<div class="content" role="main">
+    <div class="main">
+        <h1>To Do List</h1>
+        <app-add-item (addItem)="itemService.addItem($event)"></app-add-item>
+        <hr />
+        <input placeholder="Find a task" #filter (keyup)="itemService.filterItems(filter.value)" class="text-input" id="findTask" />
+        <ul>
+            <li *ngFor="let item of itemService.items; let indx = index">
+                <app-item (remove)="itemService.remove(indx)" [item]="item"></app-item>
+            </li>
+        </ul>
+    </div>
+</div>
