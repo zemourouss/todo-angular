@@ -1,7 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Item } from './models/item';
-import { ItemService } from './services/item.service';
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -10,10 +7,10 @@ import { ItemService } from './services/item.service';
 export class AppComponent implements OnInit {
   title = 'todo-list';
 
-  constructor(public itemService : ItemService) {}
-  
+  constructor() { }
+
   ngOnInit(): void {
-    this.itemService.filterItems()
+
   }
 
 }

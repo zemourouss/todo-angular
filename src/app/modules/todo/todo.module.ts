@@ -17,6 +17,7 @@ import { FormsModule } from '@angular/forms';
     CommonModule,
     FormsModule,
     TodoRoutingModule
-  ]
+  ],
+  exports: [AddItemComponent]
 })
 export class TodoModule { }
