@@ -1,5 +1,15 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ItemService } from './services/item.service';
+
+const GRAPH_ENDPOINT = 'https://graph.microsoft.com/v1.0/me';
+
+type ProfileType = {
+  givenName?: string,
+  surname?: string,
+  userPrincipalName?: string,
+  id?: string
+};
 
 @Component({
   selector: 'app-todo',
@@ -8,10 +18,21 @@ import { ItemService } from './services/item.service';
 })
 export class TodoComponent implements OnInit {
 
-  constructor(public itemService: ItemService) { }
+  profile!: ProfileType;
 
-  ngOnInit(): void {
+  constructor(public itemService: ItemService, private http: HttpClient) { }
+
+  ngOnInit() {
     this.itemService.filterItems()
+    this.getProfile();
   }
+
+  getProfile() {
+    this.http.get(GRAPH_ENDPOINT)
+      .subscribe(profile => {
+        this.profile = profile;
+      });
+  }
+
 
 }
